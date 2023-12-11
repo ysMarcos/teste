@@ -1,6 +1,6 @@
 import express from "express";
-import orcamentoRouter from "./routes/orcamento.js";
-import produtoOrcamentoRouter from "./routes/produto-orcamento.js"
+import orcamentoRouter from "./routes/orcamento.ts";
+import produtoOrcamentoRouter from "./routes/produto-orcamento.ts"
 
 const app = express();
 app.use(express.json());

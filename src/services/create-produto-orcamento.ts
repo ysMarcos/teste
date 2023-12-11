@@ -1,7 +1,7 @@
 import { sql } from "drizzle-orm";
-import { db } from "../db/index.js";
-import { produtoOrcamentoSchema } from "../db/schemas/produto-orcamento.js";
-import { ProdutoOrcamento } from "../entities/produto-orcamento.js";
+import { db } from "../db/index.ts";
+import { produtoOrcamentoSchema } from "../db/schemas/produto-orcamento.ts";
+import { ProdutoOrcamento } from "../entities/produto-orcamento.ts";
 
 export class CreateProdutoOrcamento {
     async execute(produtoOrcamento: ProdutoOrcamento) {

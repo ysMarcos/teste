@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
-import { Orcamento } from "../entities/orcamento.js";
-import { CreateOrcamento } from "../services/create-orcamento.js";
-import { ListOrcamento } from "../services/list-orcamento.js";
+import { Orcamento } from "../entities/orcamento.ts";
+import { CreateOrcamento } from "../services/create-orcamento.ts";
+import { ListOrcamento } from "../services/list-orcamento.ts";
+import { DbOrcamentoRepository } from "../db/repositories/orcamento-repository.ts";
 
 export class OrcamentoController {
     async create(request: Request, response: Response) {
@@ -10,7 +11,8 @@ export class OrcamentoController {
             nomeCliente, 
             data: new Date(data)
         })
-        const createOrcamento = new CreateOrcamento;
+        const repo = new DbOrcamentoRepository;
+        const createOrcamento = new CreateOrcamento(repo);
         try {
             const result = await createOrcamento.execute(orcamento);
             return response.status(201).json(result);
@@ -20,7 +22,8 @@ export class OrcamentoController {
     }
 
     async list(request: Request, response: Response){
-        const listOrcamento = new ListOrcamento;
+        const repo = new DbOrcamentoRepository;
+        const listOrcamento = new ListOrcamento(repo);
         try {
             const result = await listOrcamento.execute();
             return response.status(200).json(result);

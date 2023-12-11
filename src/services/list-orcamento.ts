@@ -1,15 +1,15 @@
-import { db } from "../db/index.js";
-import { orcamentoSchema } from "../db/schemas/orcamento.js";
+import { db } from "../db/index.ts";
+import { orcamentoSchema } from "../db/schemas/orcamento.ts";
+import { OrcamentoRepository } from "../repositories/orcamento.ts";
 
 export class ListOrcamento {
+    constructor(
+        private readonly repo: OrcamentoRepository
+    ){}
     async execute() {
-        const listSql = db
-            .select()
-            .from(orcamentoSchema)
-            .prepare();
         try {
-            const orcamentos = await listSql.execute();
-            return orcamentos;
+            const result = await this.repo.list();
+            return result;
         } catch(error) {
             throw error;
         }

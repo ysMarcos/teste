@@ -1,5 +1,5 @@
 import express from "express";
-import { ProdutoOrcamentoController } from "../controllers/produto-orcamento-controller.js";
+import { ProdutoOrcamentoController } from "../controllers/produto-orcamento-controller.ts";
 
 
 const router = express.Router();
