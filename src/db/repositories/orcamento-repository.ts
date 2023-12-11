@@ -24,16 +24,4 @@ export class DbOrcamentoRepository implements OrcamentoRepository{
             throw error;
         }
     }
-    async list() {
-        const listSql = db
-            .select()
-            .from(orcamentoSchema)
-            .prepare();
-        try {
-            const orcamentos = await listSql.execute();
-            return orcamentos;
-        } catch(error) {
-            throw error;
-        }
-    }
 }

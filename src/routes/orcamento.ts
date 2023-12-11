@@ -5,6 +5,5 @@ const router = express.Router();
 const controller = new OrcamentoController;
 
 router.post("/", controller.create);
-router.get("/", controller.list);
 
 export default router;
