@@ -5,22 +5,8 @@
     {
       "idx": 0,
       "version": "5",
-      "when": 1702225531860,
-      "tag": "0000_melted_famine",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1702241964440,
-      "tag": "0001_careless_xavin",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "5",
-      "when": 1702381741477,
-      "tag": "0002_dazzling_the_santerians",
+      "when": 1702415914796,
+      "tag": "0000_unknown_toad_men",
       "breakpoints": true
     }
   ]

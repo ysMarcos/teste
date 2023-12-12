@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "1003127f-3231-4923-8ac2-7ed1c35655cf",
+  "id": "01d2803e-ab31-4390-8ae8-5e67696965f1",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "orcamento": {
@@ -34,6 +34,50 @@
       "compositePrimaryKeys": {
         "orcamento_id": {
           "name": "orcamento_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "produtoOrcamento": {
+      "name": "produtoOrcamento",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "nome": {
+          "name": "nome",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "valor": {
+          "name": "valor",
+          "type": "float",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "orcamentoId": {
+          "name": "orcamentoId",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "produtoOrcamento_id": {
+          "name": "produtoOrcamento_id",
           "columns": [
             "id"
           ]
