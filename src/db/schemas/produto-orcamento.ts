@@ -5,7 +5,7 @@ import { relations } from "drizzle-orm";
 export const produtoOrcamentoSchema = mysqlTable('produtoOrcamento', {
     id: int('id').autoincrement().primaryKey(),
     nome: varchar('nome', { length: 50 }),
-    valor: float("data"),
+    valor: float("valor"),
     orcamentoId: int("orcamentoId")
 });
 

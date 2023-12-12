@@ -1,0 +1,1 @@
+ALTER TABLE `produtoOrcamento` RENAME COLUMN `data` TO `valor`;

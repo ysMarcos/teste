@@ -15,6 +15,13 @@
       "when": 1702241964440,
       "tag": "0001_careless_xavin",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1702381741477,
+      "tag": "0002_dazzling_the_santerians",
+      "breakpoints": true
     }
   ]
 }
