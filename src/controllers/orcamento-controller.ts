@@ -3,7 +3,7 @@ import { Orcamento } from "../entities/orcamento.ts";
 import { CreateOrcamento } from "../services/create-orcamento.ts";
 import { DbOrcamentoRepository } from "../db/repositories/orcamento-repository.ts";
 
-export class OrcamentoController {
+export class CreateOrcamentoController {
     async create(request: Request, response: Response) {
         const { nomeCliente, data } = request.body;
         const orcamento = new Orcamento({

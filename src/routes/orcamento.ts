@@ -1,8 +1,8 @@
 import express from "express";
-import { OrcamentoController } from "../controllers/orcamento-controller.ts";
+import { CreateOrcamentoController } from "../controllers/orcamento-controller.ts";
 
 const router = express.Router();
-const controller = new OrcamentoController;
+const controller = new CreateOrcamentoController;
 
 router.post("/", controller.create);
 

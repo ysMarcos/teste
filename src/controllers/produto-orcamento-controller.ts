@@ -3,7 +3,7 @@ import { ProdutoOrcamento } from "../entities/produto-orcamento.js";
 import { CreateProdutoOrcamento } from "../services/create-produto-orcamento.js";
 import { DbProdutoOrcamentoRepository } from "../db/repositories/produto-orcamento-repository.ts";
 
-export class ProdutoOrcamentoController {
+export class CreateProdutoOrcamentoController {
     async create(request: Request, response: Response) {
         const { items, orcamentoId } = request.body;
         const repo = new DbProdutoOrcamentoRepository;

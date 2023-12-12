@@ -1,9 +1,9 @@
 import express from "express";
-import { ProdutoOrcamentoController } from "../controllers/produto-orcamento-controller.ts";
+import { CreateProdutoOrcamentoController } from "../controllers/produto-orcamento-controller.ts";
 
 
 const router = express.Router();
-const controller = new ProdutoOrcamentoController;
+const controller = new CreateProdutoOrcamentoController;
 
 router.post("/", controller.create);
 //router.get("/", controller.list);
