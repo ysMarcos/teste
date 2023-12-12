@@ -26,15 +26,15 @@
     <form>
         <label>
             Item:
-            <input id="nome" name="nome" type="text">
+            <input id="nome" name="nome" type="text" required>
         </label>
         <label>
             Valor:
-            <input id="valor" name="valor" type="number">
+            <input id="valor" name="valor" type="number" required>
         </label>
         <label>
             Quantidade:
-            <input id="quantidade" name="quantidade" type="number">
+            <input id="quantidade" name="quantidade" type="number" required>
         </label>
         <button onclick="adicionarItem()">AdicionarItem</button>
     </form>
@@ -50,11 +50,11 @@
     <form>
         <label>
             Cliente:
-            <input id="cliente" name="cliente" type="text">
+            <input id="cliente" name="cliente" type="text" required>
         </label>
         <label>
             Data:
-            <input id="data" name="data" type="date">
+            <input id="data" name="data" type="date" required>
         </label>
         <button onclick="salvar()">Salvar</button>
     </form>
@@ -69,25 +69,26 @@
         let valor = document.getElementById("valor");
         let quantidade = document.getElementById("quantidade");
         //valida se o item existe
-        let itemExistente = items.filter(x => x.nome === nome.value)
-        console.log(itemExistente);
-        if(itemExistente[0]) {
-            itemExistente[0].quantidade = Number(itemExistente[0].quantidade) + Number(quantidade.value)
-        } else {
-            items.push({
-            nome: nome.value,
-            valor: valor.value,
-            quantidade: quantidade.value
-        })
+        if (nome.value !== null && valor.value > 0 && quantidade.value > 0) {
+            let itemExistente = items.filter(x => x.nome === nome.value)
+            console.log(itemExistente);
+            if (itemExistente[0]) {
+                itemExistente[0].quantidade = Number(itemExistente[0].quantidade) + Number(quantidade.value)
+            } else {
+                items.push({
+                    nome: nome.value,
+                    valor: valor.value,
+                    quantidade: quantidade.value
+                })
+            }
+            valorMax = Number(valorMax) + Number(valor.value);
+            console.log(items)
+            document.getElementById("valorMax").innerHTML = `<t>${valorMax}</t>`
+            nome.value = "";
+            valor.value = 0;
+            quantidade.value = 0;
         }
-        valorMax = Number(valorMax) + Number(valor.value);
-        console.log(items)
-        document.getElementById("valorMax").innerHTML = `<t>${valorMax}</t>`
-        nome.value = "";
-        valor.value = 0;
         tabela.innerHTML = renderizarLista(items);
-        //let { data } = await axios.get("https://randomuser.me/api/")
-        //console.log(data)
     }
 
     function renderizarLista(arg) {
@@ -110,22 +111,25 @@
     }
 
     async function salvar() {
+        event.preventDefault();
         try {
-            event.preventDefault();
             let nomeCliente = document.getElementById("cliente");
             let dataOrcamento = document.getElementById("data");
-            const orcamento = await axios.post("http://localhost:3000/orcamento", {
-                nomeCliente: nomeCliente.value,
-                data: dataOrcamento.value
-            });
-            console.log(orcamento.data)
-            const produto = await axios.post("http://localhost:3000/produto", {
-                items,
-                orcamentoId: orcamento.data[0].insertId
-            })
-            items = [];
-            nomeCliente.value = "";
-            dataOrcamento.value = "";
+            console.log(dataOrcamento.value)
+            if (nomeCliente.value !== null && dataOrcamento.value  >= '0000-00-00') {
+                const orcamento = await axios.post("http://localhost:3000/orcamento", {
+                    nomeCliente: nomeCliente.value,
+                    data: dataOrcamento.value
+                });
+                const produto = await axios.post("http://localhost:3000/produto", {
+                    items,
+                    orcamentoId: orcamento.data[0].insertId
+                })
+                console.log(produto)
+                if (produto.status === 201) {
+                    location.reload();
+                }
+            }
         } catch (error) {
             throw error;
         }

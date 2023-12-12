@@ -8,17 +8,16 @@ export class CreateProdutoOrcamentoController {
         const { items, orcamentoId } = request.body;
         const repo = new DbProdutoOrcamentoRepository;
         const createProdutoOrcamento = new CreateProdutoOrcamento(repo);
-        console.log("oi!")
+        let result: any[] = []
         try {
             for(let i in items){
-                const a = await createProdutoOrcamento.execute(new ProdutoOrcamento({
+                result += await createProdutoOrcamento.execute(new ProdutoOrcamento({
                     nome: items[i].nome,
                     valor: items[i].valor,
                     orcamentoId
                 }));
-                console.log(a)
             }
-            return response.status(201);
+            return response.status(201).json(result);
         } catch(error) {
             return response.status(400).json(error);
         }
