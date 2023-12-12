@@ -6,11 +6,6 @@ import { DbOrcamentoRepository } from "../db/repositories/orcamento-repository.t
 export class OrcamentoController {
     async create(request: Request, response: Response) {
         const { nomeCliente, data } = request.body;
-        if(!nomeCliente || !data || data.lenght !== 10){
-            return response.status(400).json({
-                message: "nomeCliente ou data invalidos"
-            })
-        }
         const orcamento = new Orcamento({
             nomeCliente, 
             data: new Date(data)
